@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/3f036a4888.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        background-color: #333;
+        color: white;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      code {
+        background-color: rgb(15, 15, 15);
+      }
+      i {
+        font-size: 8rem;
+      }
+      h3 {
+        color: blueviolet;
+      }
+    </style>
+    <title>Notes 12-1-20(2)</title>
+  </head>
+  <body>
+    <button
+      style="margin-left: 2rem"
+      id="home"
+      class="button-primary one-third column"
+    >
+      Home
+    </button>
+    <script>
+      document.getElementById("home").addEventListener("click", () => {
+        location.href = "index.html";
+      });
+    </script>
+    <br /><br /><br />
+    <h1>Lesson 2</h1>
+
+    <h1>Event objects</h1>
+    <p>
+      I have no idea what the author was trying to prove here, this is just not
+      doing anything for me? I commented out the code so it's gonna be redundant
+      anyways but feel free to try if you want to!
+    </p>
+    <!--
+    <button id="exampleA">Click me any way you want</button>
+    <script>
+      let button = document.getElementById("exampleA");
+      button.addEventListener("mousedown", (event) => {
+        if (event.button == 0) {
+          console.log("Left button");
+        } else if (event.button == 1) {
+          console.log("Middle button");
+        } else if (event.button == 2) {
+          console.log("Right button");
+        }
+      });
+    </script>
+    -->
+    <h1><code>preventDefault</code> method</h1>
+    <h3>Uses:</h3>
+    <ol>
+      <li>Keyboard shortcut implementation</li>
+      <li>Custom Context Menus</li>
+      <li>Interfere with other behavior</li>
+    </ol>
+    <a id="linkA" href="https://developer.mozilla.org/">MDN</a>
+    <script>
+      let link = document.getElementById("linkA");
+      link.addEventListener("click", (event) => {
+        link.innerHTML = "nope";
+        event.preventDefault();
+      });
+    </script>
+    <p>
+      ***<em
+        >Depending on the browser, some events can not be handled at all</em
+      >
+    </p>
+
+    <h1>Key Events</h1>
+    <p>This page will turn violet if you hold the "V" key.</p>
+    <script>
+      window.addEventListener("keydown", (event) => {
+        if (event.key == "v") {
+          document.body.style.background = "violet";
+        }
+      });
+      window.addEventListener("keyup", (event) => {
+        document.body.style.background = "#333";
+      });
+    </script>
+    <h1>Mouse Clicks: A Primitive Drawing Program</h1>
+    <p>Just makes dots, don't get too excited</p>
+    <iframe
+      src="primitiveGame.html"
+      frameborder="0"
+      height="400px"
+      width="600px"
+    ></iframe>
+    <h1>Mouse Motion</h1>
+    <p>
+      Every time the mouse pointer moves a <code>mousemove</code> event is fired
+      <br />
+      To exemplify this, a program below features a bar that you can drag to
+      change
+    </p>
+    <br />
+    <iframe
+      src="barThing.html"
+      frameborder="0"
+      height="400px"
+      width="900px"
+    ></iframe>
+    <p>Left off: page 252, Touch Events</p>
+  </body>
+</html>

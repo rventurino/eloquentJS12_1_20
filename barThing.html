@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/3f036a4888.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        background-color: #333;
+        color: white;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      code {
+        background-color: rgb(15, 15, 15);
+      }
+      i {
+        font-size: 8rem;
+      }
+      h3 {
+        color: blueviolet;
+      }
+      div {
+        background: orange;
+        width: 60px;
+        height: 20px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Drag the bar to change its width:</h3>
+    <div></div>
+    <script>
+      let lastX; //Tracks last observed x mouse positon
+      let bar = document.querySelector("div");
+      bar.addEventListener("mousedown", (event) => {
+        if (event.button == 0) {
+          lastX = event.clientX;
+          window.addEventListener("mousemove", moved);
+          event.preventDefault(); //prevent selection
+        }
+      });
+
+      function moved(event) {
+        if (event.buttons == 0) {
+          window.removeEventListener("mousemove", moved);
+        } else {
+          let dist = event.clientX - lastX;
+          let newWidth = Math.max(10, bar.offsetWidth + dist);
+          bar.style.width = newWidth + "px";
+          lastX = event.clientX;
+        }
+      }
+    </script>
+    <br />
+  </body>
+</html>

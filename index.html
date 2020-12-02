@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/3f036a4888.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        background-color: #333;
+        color: white;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      i {
+        font-size: 8rem;
+      }
+      h3 {
+        color: purple;
+      }
+      code {
+        background-color: rgb(15, 15, 15);
+      }
+    </style>
+    <title>Notes 12-1-20</title>
+  </head>
+  <body>
+    <h1>Eloquent JS Study Session 12/1/2020</h1>
+    <h2>Positoning and Animating</h2>
+    <h3>Circle kitty (page 239):</h3>
+    <p style="text-align: center; height: 15rem">
+      <i id="meowzer" class="fas fa-cat" style="position: relative"></i>
+    </p>
+
+    <script>
+      let cat = document.getElementById("meowzer");
+      let angle = Math.PI / 2;
+      function animate(time, lastTime) {
+        if (lastTime != null) {
+          angle += (time - lastTime) * 0.001;
+        }
+        cat.style.top = Math.sin(angle) * 20 + "px";
+        cat.style.left = Math.cos(angle) * 200 + "px";
+        requestAnimationFrame((newTime) => animate(newTime, time));
+      }
+      requestAnimationFrame(animate);
+    </script>
+    <br /><br /><br />
+    <h1>Chapter 16: Handling Events</h1>
+
+    <p>click this document to activate the handler. (Check the console)</p>
+    <img src="knocked.jpg" alt="" />
+    <script>
+      window.addEventListener("click", () => {
+        console.log("you knocked?");
+      });
+    </script>
+    <h2>Events and Dom Nodes</h2>
+
+    <button id="exampleA" class="button-primary">Click Me</button>
+    <p id="exampleB">I WONDER WHAT HAPPENS WHEN YOU PRESS THAT BUTTON</p>
+    <script>
+      let button = document.getElementById("exampleA");
+      let paragraph = document.getElementById("exampleB");
+      let bool = false;
+      button.addEventListener("click", () => {
+        if (bool === false) {
+          paragraph.innerHTML = "WHERE DID THE OTHER TEXT GO MAN????";
+          bool = true;
+        } else {
+          paragraph.innerHTML =
+            "I WONDER WHAT HAPPENS WHEN YOU PRESS THAT BUTTON";
+          bool = false;
+        }
+      });
+    </script>
+    <br />
+    <button id="toLesson2" class="button-primary one-third column">
+      Lesson 2
+    </button>
+    <script>
+      document.getElementById("toLesson2").onclick = () => {
+        location.href = "lesson2.html";
+      };
+    </script>
+
+    <br />
+  </body>
+</html>
